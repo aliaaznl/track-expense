@@ -20,12 +20,6 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
     
-    @Column(name = "provider")
-    private String provider; // Reserved for future use
-    
-    @Column(name = "provider_id")
-    private String providerId; // Reserved for future use
-    
     @Column(name = "currency", length = 10)
     private String currency = "MYR"; // Default currency (Malaysian Ringgit)
     
