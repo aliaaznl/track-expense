@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-    
-    <!-- Dashboard JavaScript Modules - Load in order -->
-    <script src="js/dashboard-common.js"></script>
-    <script src="js/dashboard-init.js"></script>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
@@ -513,7 +509,7 @@
 </head>
 <body>
 
-    <!-- Sidebar -->
+    <!-- sidebar -->
     <div class="sidebar">
         <div class="sidebar-logo">
             <img src="/logo.png" alt="Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#fff; font-weight:700;\'>ET</span>'">
@@ -549,9 +545,9 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- main -->
     <div class="main-content">
-        <!-- Top Header -->
+        <!-- header -->
         <div class="top-header">
             <div class="header-left">
                 <div class="greeting">
@@ -566,14 +562,14 @@
             </div>
         </div>
 
-        <!-- Content Area -->
+        <!-- content -->
         <div class="content-area">
-            <!-- Exports View - Moved to top -->
+            <!-- exports -->
             <div id="exports" class="view" style="display: none;">
                 <h2 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 20px;">Export History</h2>
                 
                 <div style="background: #0f0f0f; padding: 20px; border-radius: 12px; border: 1px solid #27272a;">
-                    <!-- Selection Header -->
+                    <!-- selection -->
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #27272a;">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <input type="checkbox" id="select-all-exports-checkbox" onchange="toggleSelectAllExports()">
@@ -585,12 +581,12 @@
                     </div>
                     
                     <div id="exports-list" style="display: flex; flex-direction: column; gap: 12px;">
-                        <!-- Export history will be loaded here -->
+                        <!-- exports list -->
                     </div>
                 </div>
             </div>
             
-            <!-- Overview/Dashboard View -->
+            <!-- dashboard -->
             <div id="overview" class="view active">
                 <div class="dashboard-cards">
                     <div class="dashboard-card">
@@ -613,9 +609,9 @@
                     </div>
                 </div>
                 
-                <!-- Charts Side by Side -->
+                <!-- charts -->
                 <div class="dashboard-cards" style="grid-template-columns: repeat(auto-fit, minmax(min(400px, calc(100% - 48px)), 1fr)); gap: 20px; width: 100%; max-width: 100%; box-sizing: border-box; padding: 0; margin: 0 0 24px 0;">
-                    <!-- Expense by Category Chart -->
+                    <!-- category chart -->
                     <div class="chart-container" style="margin-bottom: 0; width: 100%; max-width: 100%; min-width: 0;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <div class="chart-title">Expense by Category</div>
@@ -633,7 +629,7 @@
                     </div>
                 </div>
 
-                <!-- Upcoming Expense Cards -->
+                <!-- upcoming expenses -->
                     <div class="chart-container" style="margin-bottom: 0; width: 100%; max-width: 100%; min-width: 0;">
                     <div class="chart-title">Upcoming Expense</div>
                     <div style="display: flex; gap: 8px; margin-top: 12px; margin-bottom: 16px; margin-left: 0; padding: 0;">
@@ -642,12 +638,12 @@
                         <button id="filter-month" class="expense-filter-btn" onclick="setExpenseFilter('month')">This Month</button>
                     </div>
                         <div id="upcoming-bills-container" style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 16px;">
-                        <!-- Recurring expenses will be dynamically inserted here -->
+                        <!-- recurring expenses -->
                     </div>
                     </div>
                 </div>
                 
-                <!-- Monthly Income & Expenses Bar Chart -->
+                <!-- monthly chart -->
                 <div class="chart-container" style="margin-top: 24px; width: 100%; max-width: 100%; min-width: 0;">
                     <div class="chart-title">Monthly Income & Expenses</div>
                     <div class="chart-wrapper" style="height: 300px;">
@@ -656,7 +652,7 @@
                 </div>
             </div>
 
-            <!-- Transactions View -->
+            <!-- transactions -->
             <div id="transactions" class="view">
                 <div class="header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
                     <h2 style="font-size: 20px; font-weight: 600; color: #fff;">Transactions</h2>
@@ -669,18 +665,18 @@
                         <input type="checkbox" id="select-all-checkbox" onchange="toggleSelectAll()">
                         <span id="selected-count" style="color: #a1a1aa; font-size: 13px;">0 selected</span>
                         
-                        <!-- Delete Selected Button -->
+                        <!-- delete btn -->
                         <button id="bulk-delete-btn" onclick="bulkDeleteTransactions()" style="display: none; background: #ff5757; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; height: 37px; box-sizing: border-box; align-items: center; gap: 6px; transition: all 0.2s;" onmouseover="this.style.background='#ff4040'" onmouseout="this.style.background='#ff5757'">
                             <i class="fa-solid fa-trash"></i> Delete Selected
                         </button>
                         
-                        <!-- Search Bar -->
+                        <!-- search -->
                         <div class="search-filter-container">
                             <i class="fa-solid fa-search" style="color: #a1a1aa; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);"></i>
                             <input type="text" id="search-transactions" placeholder="Search transactions" oninput="applyFilters()" style="width: 230px; padding: 8px 10px 8px 36px; background: #0f0f0f; border: 1px solid #27272a; border-radius: 8px; color: #fff; font-size: 13px; outline: none;">
                         </div>
                         
-                        <!-- Type/Category Filter -->
+                        <!-- filter -->
                         <select id="filter-type-category" onchange="applyFilters()" style="padding: 8px 30px 8px 10px; background: #0f0f0f; border: 1px solid #27272a; border-radius: 8px; color: #fff; font-size: 13px; outline: none; cursor: pointer; min-width: 140px; appearance: none; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath fill=\'%23a1a1aa\' d=\'M6 9L1 4h10z\'/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 14px center; box-sizing: border-box; line-height: 1.5; height: 37px;">
                             <option value="">All Types & Categories</option>
                             <option value="EXPENSE">Expense</option>
@@ -688,7 +684,7 @@
                             <optgroup label="By Category" id="category-filter-group"></optgroup>
                         </select>
                         
-                        <!-- Date Range Filter -->
+                        <!-- date filter -->
                         <select id="filter-date-range" onchange="handleDateRangeChange()" style="padding: 8px 30px 8px 10px; background: #0f0f0f; border: 1px solid #27272a; border-radius: 8px; color: #fff; font-size: 13px; outline: none; cursor: pointer; min-width: 140px; appearance: none; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath fill=\'%23a1a1aa\' d=\'M6 9L1 4h10z\'/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 14px center; box-sizing: border-box; line-height: 1.5; height: 37px;">
                             <option value="all">All Time</option>
                             <option value="week">This Week</option>
@@ -696,14 +692,14 @@
                             <option value="custom">Custom Date Range</option>
                         </select>
                         
-                        <!-- Custom Date Range Inputs (hidden by default) -->
+                        <!-- custom dates -->
                         <div id="custom-date-range" style="display: none; align-items: center; gap: 8px; flex-wrap: nowrap;">
                             <input type="date" id="date-from" onchange="applyFilters()">
                             <span style="color: #a1a1aa;">to</span>
                             <input type="date" id="date-to" onchange="applyFilters()">
                         </div>
                     </div>
-                    <!-- Export Button - Right Aligned (stays on right even when custom date range is shown) -->
+                    <!-- export btn -->
                     <button class="export-btn" onclick="openExportModal()" title="Export Data" style="height: 37px; padding: 10px 20px; display: flex; align-items: center; gap: 6px; box-sizing: border-box; flex-shrink: 0; margin-left: auto;">
                         <i class="fa-solid fa-download"></i> Export
                     </button>
@@ -713,7 +709,7 @@
                     <tbody id="txn-tbody"></tbody>
                 </table>
                 
-                <!-- Pagination Controls -->
+                <!-- pagination -->
                 <div id="pagination-controls" style="display: none; margin-top: 20px; padding: 16px; background: #0f0f0f; border-radius: 12px; border: 1px solid #27272a;">
                     <div style="color: #a1a1aa; font-size: 13px;">
                         <span id="pagination-info">Showing 0-0 of 0</span>
@@ -723,7 +719,7 @@
                             <i class="fa-solid fa-chevron-left"></i> Previous
                         </button>
                         <div id="page-numbers" style="display: flex; gap: 4px;">
-                            <!-- Page numbers will be inserted here -->
+                            <!-- page numbers -->
                         </div>
                         <button id="next-page-btn" onclick="goToNextPage()" style="padding: 8px 16px; background: #18181b; color: #fff; border: 1px solid #27272a; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all 0.2s;">
                             Next <i class="fa-solid fa-chevron-right"></i>
@@ -743,7 +739,7 @@
                 </div>
             </div>
     
-    <!-- Lightbox for viewing attachments -->
+    <!-- lightbox -->
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
         <button class="lightbox-nav prev" onclick="prevFile(event)"><i class="fa-solid fa-chevron-left"></i></button>
@@ -758,20 +754,20 @@
                     <h2 style="font-size: 20px; font-weight: 600; color: #fff;">Budget</h2>
                 </div>
                 <div class="budget-grid" id="budget-grid">
-                    <!-- Budget cards will be loaded here -->
+                    <!-- budget cards -->
                 </div>
             </div>
 
-            <!-- Settings View -->
+            <!-- settings -->
             <div id="settings" class="view">
                 <h2 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 20px;">Settings</h2>
                 
-                <!-- Account Section -->
+                <!-- account -->
                 <div style="background: #0f0f0f; padding: 20px; border-radius: 12px; border: 1px solid #27272a; margin-bottom: 20px;">
                     <h3 style="font-size: 16px; font-weight: 600; color: #fff; margin: 0 0 16px 0;">Account</h3>
                     
                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <!-- Profile Information -->
+                        <!-- profile -->
                         <div id="profile-section" style="display: none;">
                             <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #18181b; border-radius: 10px; border: 1px solid #27272a;">
                                 <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #b5ff7d 0%, #48c6ef 100%); display: flex; align-items: center; justify-content: center; color: #000; font-weight: 600; font-size: 18px; flex-shrink: 0;" id="account-avatar">
@@ -790,7 +786,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Edit Profile Form (hidden by default) -->
+                            <!-- edit form -->
                             <div id="edit-profile-form" style="display: none; margin-top: 16px; padding: 16px; background: #18181b; border-radius: 10px; border: 1px solid #27272a;">
                                 <div class="input-group">
                                     <label style="display: block; font-size: 12px; font-weight: 500; color: #a1a1aa; margin-bottom: 6px;">Name</label>
@@ -811,7 +807,7 @@
                             </div>
                         </div>
                         
-                        <!-- Profile Information Display (for non-local accounts or when not editing) -->
+                        <!-- profile display -->
                         <div id="profile-display" style="display: flex; align-items: center; gap: 16px; padding: 16px; background: #18181b; border-radius: 10px; border: 1px solid #27272a;">
                             <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #b5ff7d 0%, #48c6ef 100%); display: flex; align-items: center; justify-content: center; color: #000; font-weight: 600; font-size: 18px; flex-shrink: 0;" id="account-avatar-display">
                                 <span id="account-initial-display">U</span>
@@ -822,7 +818,7 @@
                             </div>
                         </div>
                         
-                        <!-- Change Password (only for local accounts) -->
+                        <!-- change password -->
                         <div id="password-section" style="display: none;">
                             <div class="input-group">
                                 <label style="display: block; font-size: 12px; font-weight: 500; color: #a1a1aa; margin-bottom: 6px;">Change Password</label>
@@ -846,7 +842,7 @@
                             </div>
                         </div>
                         
-                        <!-- Account Actions -->
+                        <!-- account actions -->
                         <div style="border-top: 1px solid #27272a; padding-top: 16px; margin-top: 8px;">
                             <div style="display: flex; flex-direction: column; gap: 12px;">
                                 <button onclick="confirmDeleteAccount()" style="width: fit-content; padding: 10px 20px; background: transparent; color: #ff5757; border: 1px solid #ff5757; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s;">
@@ -863,7 +859,7 @@
                     <h3 style="font-size: 16px; font-weight: 600; color: #fff; margin: 0 0 16px 0;">General Settings</h3>
                     
                     <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <!-- Currency Selection -->
+                        <!-- currency -->
                         <div class="input-group">
                             <label style="display: block; font-size: 12px; font-weight: 500; color: #a1a1aa; margin-bottom: 6px;">Currency</label>
                             <select id="currency-select" style="width: 100%; max-width: 280px; background: #18181b; border: 2px solid transparent; padding: 10px 50px 10px 10px; color: #fff; border-radius: 10px; font-size: 13px; cursor: pointer; transition: all 0.2s ease; appearance: none; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 12 12\'%3E%3Cpath fill=\'%23a1a1aa\' d=\'M6 9L1 4h10z\'/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 18px center;" onchange="updateCurrency()">
@@ -888,7 +884,7 @@
                     </div>
                 </div>
                 
-                <!-- Category Management Section -->
+                <!-- categories -->
                 <div style="background: #0f0f0f; padding: 20px; border-radius: 12px; border: 1px solid #27272a; margin-bottom: 20px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <h3 style="font-size: 16px; font-weight: 600; color: #fff; margin: 0;">Category Management</h3>
@@ -897,14 +893,14 @@
                         </button>
                     </div>
                     <div id="categories-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px;">
-                        <!-- Categories will be loaded here -->
+                        <!-- category list -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Budget Modal -->
+    <!-- budget modal -->
     <div class="modal" id="budgetModal">
         <div class="modal-content budget-modal-content">
             <div class="modal-header">
@@ -931,10 +927,10 @@
         </div>
     </div>
 
-    <!-- Modal Backdrop -->
+    <!-- backdrop -->
     <div class="modal-backdrop" id="modal-backdrop"></div>
     
-    <!-- Budget Detail Modal -->
+    <!-- budget detail modal -->
     <div class="modal" id="budgetDetailModal" style="display: none;">
         <div class="modal-content" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
             <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
@@ -951,7 +947,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <!-- Budget Info Section -->
+                <!-- budget info -->
                 <div style="background: #18181b; padding: 16px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #27272a;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <div>
@@ -978,7 +974,7 @@
                     </div>
                 </div>
 
-                <!-- Edit Budget Section -->
+                <!-- edit budget -->
                 <div style="background: #18181b; padding: 16px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #27272a;">
                     <h4 style="font-size: 14px; font-weight: 600; color: #fff; margin: 0 0 12px 0;">Edit Budget Amount</h4>
                     <div class="input-group">
@@ -992,7 +988,7 @@
                     </div>
                 </div>
 
-                <!-- Transactions List Section -->
+                <!-- transactions list -->
                 <div>
                     <h4 style="font-size: 14px; font-weight: 600; color: #fff; margin: 0 0 12px 0;">Transactions in this Category</h4>
                     <div id="budget-transactions-list" style="background: #18181b; border-radius: 10px; border: 1px solid #27272a; overflow: hidden;">
@@ -1005,7 +1001,7 @@
         </div>
     </div>
     
-    <!-- Transaction Modal -->
+    <!-- transaction modal -->
     <div class="modal" id="txnModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1017,13 +1013,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Expense / Income Tabs - At Top -->
+                <!-- tabs -->
                 <div class="tab-wrapper">
                     <button type="button" class="tab-btn active" id="tab-expense" onclick="setTxnType('EXPENSE')">Expense</button>
                     <button type="button" class="tab-btn" id="tab-income" onclick="setTxnType('INCOME')">Income</button>
                 </div>
 
-                <!-- Amount and Category Side by Side -->
+                <!-- amount & category -->
                 <div class="input-row" id="amount-category-row">
                     <div class="input-group" id="amount-group">
                         <label>Amount</label>
@@ -1039,7 +1035,7 @@
                     </div>
                 </div>
 
-                <!-- Description -->
+                <!-- description -->
                 <div class="input-group">
                     <label>Description</label>
                     <input type="text" id="desc" placeholder="What is this for?">
@@ -1051,7 +1047,7 @@
                     <input type="date" id="date">
                 </div>
 
-                <!-- Recurring Section -->
+                <!-- recurring -->
                 <div class="recurring-section">
                     <div class="recurring-toggle-wrapper">
                         <label class="recurring-toggle-label">Make this recurring</label>
@@ -1074,7 +1070,7 @@
                     </div>
                 </div>
 
-                <!-- Attachments - Minimal -->
+                <!-- attachments -->
                 <div class="attachment-section">
                     <label class="attachment-label">Attachments</label>
                     <div class="attachment-minimal" id="dropzone" onclick="document.getElementById('file-input').click()">
@@ -1091,7 +1087,7 @@
         </div>
     </div>
 
-    <!-- Category Management Modal -->
+    <!-- category modal -->
     <div class="modal" id="categoryModal">
         <div class="modal-content" style="max-width: 500px;">
             <div class="modal-header">
@@ -1111,7 +1107,7 @@
                 <div class="input-group">
                     <label>Icon</label>
                     <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; max-height: 200px; overflow-y: auto; padding: 8px; background: #18181b; border-radius: 12px; border: 2px solid transparent;">
-                        <!-- Icons will be populated by JavaScript -->
+                        <!-- icons -->
                     </div>
                     <input type="hidden" id="category-icon-input" value="fa-circle-question">
                 </div>
@@ -1176,7 +1172,7 @@
         </div>
     </div>
 
-    <!-- Custom Dialog Modals -->
+    <!-- dialogs -->
     <div class="dialog-modal" id="confirmDialog">
         <div class="dialog-content">
             <div class="dialog-title" id="confirmTitle">Confirm</div>
@@ -1199,15 +1195,8 @@
     </div>
 
     <script>
-        // CRITICAL: Log that script is executing
-        console.log('=== DASHBOARD SCRIPT LOADING ===');
-        console.log('Script execution started at:', new Date().toISOString());
-        
-        // API Configuration
         const API_BASE_URL = 'http://localhost:8080';
-        console.log('API_BASE_URL set to:', API_BASE_URL);
         
-        // Helper function to get token dynamically
         function getToken() {
             const token = localStorage.getItem('jwtToken');
             if (!token) {
@@ -1217,19 +1206,11 @@
             return token;
         }
         
-        // Check token on page load
-        console.log('Checking for token in localStorage...');
         const token = getToken();
         if (!token) {
-            console.error('No JWT token found in localStorage. Redirecting to login...');
             window.location.href = 'index.html';
-        } else {
-            console.log('JWT token found in localStorage, length:', token.length);
         }
-        
-        console.log('=== SCRIPT INITIALIZATION COMPLETE ===');
 
-        // Custom Dialog Functions
         let confirmCallback = null;
         
         function showConfirmDialog(message, title = 'Confirm', callback) {
@@ -1264,7 +1245,6 @@
             document.getElementById('alertDialog').style.display = 'none';
         }
         
-        // Close dialogs on backdrop click
         document.getElementById('confirmDialog').addEventListener('click', (e) => {
             if (e.target.id === 'confirmDialog') {
                 closeConfirmDialog(false);
@@ -1282,16 +1262,12 @@
         let allCategories = [];
         let selectedFiles = [];
         let isRecurring = false;
-        let allTransactions = []; // Store all transactions for filtering
-        let currentPage = 1; // Current page for pagination
-        const itemsPerPage = 10; // Number of items per page
-        let isDeleting = false; // Flag to prevent refreshData from interfering with deletions
+        let allTransactions = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let isDeleting = false;
+        let userCurrency = 'MYR';
         
-        // User settings
-        let userCurrency = 'MYR'; // Default currency
-        // Use default date format (DD/MM/YYYY) - no user selection needed
-        
-        // Currency symbols mapping
         const currencySymbols = {
             'MYR': 'RM',
             'USD': '$',
@@ -1316,16 +1292,7 @@
             return symbol + amount.toFixed(2);
         }
 
-        // Test: Verify window.onload is being set
-        console.log('Setting window.onload handler...');
-        
         window.onload = async () => {
-            console.log('=== DASHBOARD PAGE LOADED ===');
-            console.log('Window.onload executing at:', new Date().toISOString());
-            console.log('Document ready state:', document.readyState);
-            
-            
-            // Verify token is available before making requests
             const currentToken = getToken();
             if (!currentToken) {
                 console.error('No token found in localStorage! Redirecting to login...');
@@ -1336,87 +1303,27 @@
                 return;
             }
             
-            console.log('=== DASHBOARD INITIALIZATION ===');
-            console.log('Token verified, length:', currentToken.length);
-            console.log('Token preview:', currentToken.substring(0, 30) + '...');
-            console.log('API Base URL:', API_BASE_URL);
-            console.log('Current page URL:', window.location.href);
-            console.log('Starting data load sequence...');
-            
-            // Test: Verify token can be retrieved again
-            const testToken = getToken();
-            console.log('Test: getToken() returns token:', !!testToken, testToken ? testToken.length : 0);
-            
-            // CRITICAL TEST: Make a simple fetch call IMMEDIATELY to verify network is working
-            console.log('=== NETWORK CONNECTIVITY TEST ===');
-            console.log('Making test fetch to:', `${API_BASE_URL}/api/user`);
-            console.log('With token length:', currentToken.length);
-            
-            try {
-                const testResponse = await fetch(`${API_BASE_URL}/api/user`, {
-                    method: 'GET',
-                    headers: { 
-                        'Authorization': 'Bearer ' + currentToken,
-                        'Content-Type': 'application/json'
-                    },
-                    mode: 'cors',
-                    credentials: 'include'
-                });
-                console.log('✓ Network test SUCCESS - Response status:', testResponse.status);
-                console.log('Response statusText:', testResponse.statusText);
-                console.log('Response headers:', Object.fromEntries([...testResponse.headers.entries()]));
-                
-                if (testResponse.ok) {
-                    const userData = await testResponse.json();
-                    console.log('✓ User data received:', userData);
-                } else {
-                    const errorText = await testResponse.text();
-                    console.error('✗ Network test returned error:', testResponse.status, errorText);
-                }
-            } catch (testError) {
-                console.error('✗✗✗ NETWORK TEST FAILED ✗✗✗');
-                console.error('Error name:', testError.name);
-                console.error('Error message:', testError.message);
-                console.error('Error stack:', testError.stack);
-                console.error('This means fetch() is not working. Check CORS, network, or browser console.');
-                alert('Network test failed: ' + testError.message + '\nCheck browser console for details.');
-            }
-            
-            // Load all data (user info, transactions, categories, etc.)
-            // Load user info first, then other data
-            console.log('Calling loadUserInfo()...');
             try {
                 await loadUserInfo();
-                console.log('✓ User info loaded successfully');
             } catch (error) {
-                console.error('✗ Error loading user info:', error);
-                console.error('Error stack:', error.stack);
+                console.error('Error loading user info:', error);
             }
             
-            console.log('Calling refreshData()...');
             try {
                 await refreshData();
-                console.log('✓ Transactions loaded successfully');
             } catch (error) {
-                console.error('✗ Error loading transactions:', error);
-                console.error('Error stack:', error.stack);
+                console.error('Error loading transactions:', error);
             }
             
-            console.log('Calling loadCategories()...');
             try {
                 await loadCategories();
-                console.log('✓ Categories loaded successfully');
             } catch (error) {
-                console.error('✗ Error loading categories:', error);
+                console.error('Error loading categories:', error);
             }
             
             document.getElementById('date').valueAsDate = new Date();
             setupAttachments();
             
-            
-            console.log('=== INITIALIZATION COMPLETE ===');
-            
-            // Initialize sidebar indicator position
             const activeItem = document.querySelector('.sidebar-item.active');
             if (activeItem) {
                 const indicator = document.getElementById('sidebar-indicator');
@@ -1429,19 +1336,15 @@
                 }
             }
             
-            // Initialize overview view
             switchView('overview', activeItem);
         };
 
         let categoryChart = null;
         let monthlyChart = null;
 
-        // Update Monthly Income & Expenses Bar Chart
         function updateMonthlyChart(transactions) {
             const ctx = document.getElementById('monthlyChart');
             if (!ctx) return;
-
-            // Group transactions by month
             const monthlyData = {};
             
             transactions.forEach(t => {
@@ -1502,7 +1405,6 @@
                 return;
             }
 
-            // Create bar chart
             monthlyChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -1957,7 +1859,6 @@
                 if (!res.ok) {
                     const errorText = await res.text().catch(() => 'No error details');
                     console.error('Failed to fetch transactions:', res.status, res.statusText, errorText);
-                    // Clear UI if fetch fails to prevent showing stale data
                     allTransactions = [];
                 window.allTransactions = [];
                     applyFilters();
@@ -1991,7 +1892,6 @@
                     stack: error.stack
                 });
                 
-                // Clear UI on error to prevent showing stale data
                 allTransactions = [];
                 window.allTransactions = [];
                 applyFilters();
@@ -2010,11 +1910,9 @@
             }
         }
 
-        // Filter Functions
         function applyFiltersToData(data) {
             let filtered = [...data];
             
-            // Search filter
             const searchTerm = document.getElementById('search-transactions').value.toLowerCase().trim();
             if (searchTerm) {
                 filtered = filtered.filter(t => 
@@ -2024,50 +1922,43 @@
                 );
             }
             
-            // Type/Category filter
             const typeCategoryFilter = document.getElementById('filter-type-category').value;
             if (typeCategoryFilter) {
                 if (typeCategoryFilter === 'EXPENSE' || typeCategoryFilter === 'INCOME') {
                     filtered = filtered.filter(t => t.type === typeCategoryFilter);
                 } else {
-                    // It's a category
                     filtered = filtered.filter(t => t.category === typeCategoryFilter);
                 }
             }
             
-            // Date range filter
             const dateRange = document.getElementById('filter-date-range').value;
             if (dateRange !== 'all') {
                 const today = new Date();
-                today.setHours(0, 0, 0, 0); // Set to start of day
+                today.setHours(0, 0, 0, 0);
                 
                 if (dateRange === 'week') {
-                    // Get start of current week (Sunday)
                     const startOfWeek = new Date(today);
                     const day = startOfWeek.getDay();
-                    const diff = startOfWeek.getDate() - day; // Get Sunday
+                    const diff = startOfWeek.getDate() - day;
                     startOfWeek.setDate(diff);
                     startOfWeek.setHours(0, 0, 0, 0);
                     
-                    // End of week is today
                     const endOfWeek = new Date(today);
                     endOfWeek.setHours(23, 59, 59, 999);
                     
                     filtered = filtered.filter(t => {
-                        const tDate = new Date(t.date + 'T00:00:00'); // Parse date string properly
+                        const tDate = new Date(t.date + 'T00:00:00');
                         return tDate >= startOfWeek && tDate <= endOfWeek;
                     });
                 } else if (dateRange === 'month') {
-                    // Get start of current month
                     const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
                     startOfMonth.setHours(0, 0, 0, 0);
                     
-                    // End of month is today
                     const endOfMonth = new Date(today);
                     endOfMonth.setHours(23, 59, 59, 999);
                     
                     filtered = filtered.filter(t => {
-                        const tDate = new Date(t.date + 'T00:00:00'); // Parse date string properly
+                        const tDate = new Date(t.date + 'T00:00:00');
                         return tDate >= startOfMonth && tDate <= endOfMonth;
                     });
                 } else if (dateRange === 'custom') {
@@ -2093,17 +1984,11 @@
             return filtered;
         }
 
-        // Track previous filter state to detect changes
         let previousFilterState = '';
-        
-        // Date sort order: 'asc' = oldest to newest (default), 'desc' = newest to oldest
         let dateSortOrder = 'asc';
         
         function toggleDateSort() {
-            // Toggle between 'asc' and 'desc'
             dateSortOrder = dateSortOrder === 'asc' ? 'desc' : 'asc';
-            
-            // Update arrow icon
             const sortIcon = document.getElementById('date-sort-icon');
             if (sortIcon) {
                 if (dateSortOrder === 'asc') {
@@ -2113,12 +1998,10 @@
                 }
             }
             
-            // Reapply filters with new sort order
             applyFilters(false);
         }
         
         function applyFilters(resetPage = true) {
-            // Handle empty transactions case
             if (allTransactions.length === 0) {
                 const table = document.getElementById('transactions-table');
                 const emptyState = document.getElementById('transactions-empty-state');
@@ -2129,7 +2012,6 @@
                 if (paginationControls) paginationControls.style.display = 'none';
                 document.getElementById('txn-tbody').innerHTML = '';
                 
-                // Reset totals
                 document.getElementById('dash-income').innerText = formatCurrency(0);
                 document.getElementById('dash-expense').innerText = formatCurrency(0);
                 
@@ -2141,7 +2023,6 @@
             
             const filteredData = applyFiltersToData(allTransactions);
             
-            // Sort by date based on current sort order
             filteredData.sort((a, b) => {
                 const dateA = new Date(a.date + 'T00:00:00');
                 const dateB = new Date(b.date + 'T00:00:00');
@@ -2161,7 +2042,6 @@
                 dateTo: document.getElementById('date-to').value
             });
             
-            // Reset to page 1 only if filters actually changed or if explicitly requested
             if (resetPage && currentFilterState !== previousFilterState) {
                 currentPage = 1;
                 previousFilterState = currentFilterState;
@@ -2173,7 +2053,6 @@
             const endIndex = startIndex + itemsPerPage;
             const paginatedData = filteredData.slice(startIndex, endIndex);
             
-            // Calculate totals from ALL filtered data (not just current page)
             let inc = 0, exp = 0;
             filteredData.forEach(t => {
                 if (t.type === 'INCOME') inc += t.amount; else exp += t.amount;
@@ -2256,7 +2135,6 @@
             paginationControls.style.justifyContent = 'space-between';
             paginationControls.style.alignItems = 'center';
             
-            // Update info text
             const startIndex = (currentPage - 1) * itemsPerPage + 1;
             const endIndex = Math.min(currentPage * itemsPerPage, totalItems);
             paginationInfo.textContent = `Showing ${startIndex}-${endIndex} of ${totalItems}`;
@@ -2281,7 +2159,6 @@
                 nextBtn.style.cursor = 'pointer';
             }
             
-            // Generate page numbers (show max 5 pages)
             pageNumbers.innerHTML = '';
             let startPage = Math.max(1, currentPage - 2);
             let endPage = Math.min(totalPages, startPage + 4);
