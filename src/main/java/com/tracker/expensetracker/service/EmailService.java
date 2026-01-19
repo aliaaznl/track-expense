@@ -38,7 +38,6 @@ public class EmailService {
                 "You requested to reset your password for your TrackExpense account.\n\n" +
                 "Click the link below to reset your password:\n" +
                 resetLink + "\n\n" +
-                "This link will expire in 1 hour.\n\n" +
                 "If you did not request this password reset, please ignore this email.\n\n"
             );
 
@@ -47,9 +46,6 @@ public class EmailService {
         } catch (Exception e) {
             System.err.println("Failed to send email: " + e.getMessage());
             e.printStackTrace();
-            // Fallback: log the token so user can still test
-            System.out.println("Email sending failed. Password reset token for " + toEmail + ": " + resetToken);
-            System.out.println("Reset link: " + baseUrl + "/reset-password.html?token=" + resetToken);
         }
     }
 }
