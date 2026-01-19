@@ -28,7 +28,7 @@ public class TransactionService {
         return transactionRepository.findByUser(user);
     }
 
-    // 2. Add a new transaction (using email from JWT) - Updated to handle recurring
+    // 2. Add a new transaction (using email from JWT)
     @Transactional
     public Transaction addTransaction(TransactionRequest request, String email) {
         User user = userRepository.findByEmail(email).orElseThrow();

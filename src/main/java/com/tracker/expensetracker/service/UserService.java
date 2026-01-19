@@ -154,7 +154,4 @@ public class UserService {
         // Finally, delete the user account
         userRepository.delete(user);
     }
-
-    // Note: We removed the manual "loginUser" method here because
-    // AuthenticationManager will handle password checking for us now!
 }
