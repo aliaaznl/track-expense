@@ -2897,18 +2897,10 @@
                     if (profileUsernameInput) profileUsernameInput.value = usernameText;
                     if (profileEmailInput) profileEmailInput.value = user.email;
                     
-                    // Show sections based on account type
-                    if (!user.provider) {
-                        // Local account - show password and profile sections
-                        if (passwordSection) passwordSection.style.display = 'block';
-                        if (profileSection) profileSection.style.display = 'block';
-                        if (profileDisplay) profileDisplay.style.display = 'none';
-                    } else {
-                        // OAuth account - show display only
-                        if (profileDisplay) profileDisplay.style.display = 'flex';
-                        if (profileSection) profileSection.style.display = 'none';
-                        if (passwordSection) passwordSection.style.display = 'none';
-                    }
+                    // Show password and profile sections (all accounts are local)
+                    if (passwordSection) passwordSection.style.display = 'block';
+                    if (profileSection) profileSection.style.display = 'block';
+                    if (profileDisplay) profileDisplay.style.display = 'none';
                     
                     // Time-based greeting
                     const hour = new Date().getHours();
