@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 50%, #1f1f1f 100%); /* Subtle gradient grey */
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px; /* Base font size to prevent browser defaults */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(181, 255, 125, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(72, 198, 239, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+    color: #ffffff; /* White Text */
+}
+
+p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+    color: #a1a1aa; /* Light Grey Text */
+}
+
+span {
+    font-size: 12px;
+    color: #71717a;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.or-divider {
+    font-size: 12px;
+    color: #71717a;
+    margin: 15px 0 10px 0;
+    display: block;
+}
+
+a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+a.social {
+    color: #fff; /* White Icons */
+}
+
+/* --- Button Styling --- */
+button {
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+/* The transparent buttons on the overlay */
+button.ghost {
+    background-color: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* --- Form Container Styling --- */
+form {
+    background-color: #18181b; /* Dark Grey Form Background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+/* Input Fields */
+.infield {
+    position: relative;
+    width: 100%;
+    margin: 8px 0;
+}
+
+input {
+    background-color: #18181b; /* Slightly lighter grey for inputs */
+    border: 1px solid #27272a;
+    padding: 12px 15px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    border-color: #52525b;
+    background-color: #1a1a1a;
+}
+
+/* Main Card Container */
+.container {
+    background-color: #18181b;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.5), 
+                0 10px 10px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    border: 1px solid #27272a;
+}
+
+/* --- The Sliding Mechanics --- */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    background-color: #0f0f0f;
+    border-radius: 20px;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    border-right: 1px solid #27272a;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    border-right: 1px solid #27272a;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation triggers */
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* --- Overlay (The Moving Black Block) --- */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: #000000; /* Solid Black Overlay */
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+/* Social Icons */
+.social-container {
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-container a {
+    border: 1px solid #52525b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+.social-container a i {
+    font-size: 20px;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.social-container a:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.forgot {
+    margin: 10px 0;
+    display: block;
+}
