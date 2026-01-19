@@ -21,18 +21,14 @@ public class Transaction {
 
     private String receiptImage;
 
-    // --- RELATIONSHIP 1: The Owner ---
     // Many transactions belong to One User.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // --- RELATIONSHIP 2: The Category (SIMPLIFIED) ---
-    // We changed this from "Category object" to "String" so it accepts "Food"
     @Column(name = "category")
     private String category;
 
-    // Add this field to your Transaction entity
     @Column(name = "type")
     private String type; // Will store "EXPENSE" or "INCOME"
 
