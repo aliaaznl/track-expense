@@ -1,0 +1,26 @@
+# --- Java & Maven ---
+target/
+.mvn/wrapper/maven-wrapper.jar
+*.class
+*.log
+*.jar
+*.war
+
+# --- IntelliJ IDEA (Your IDE) ---
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# --- VS Code (Clean up clutter) ---
+.vscode/
+
+# --- Frontend & Web (Crucial for your static/JS files) ---
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+
+# --- Application Data ---
+/uploads/
