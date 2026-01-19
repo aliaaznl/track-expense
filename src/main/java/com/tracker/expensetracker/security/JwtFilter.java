@@ -21,7 +21,6 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;
 
-    // --- CORRECTION HERE: This sits at the CLASS level (top), not inside the method ---
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
