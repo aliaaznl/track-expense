@@ -68,7 +68,6 @@ public class FileStorageService {
             Path filePath = uploadPath.resolve(filename).normalize();
             Files.deleteIfExists(filePath);
         } catch (IOException e) {
-            // Log error but don't throw - file deletion is not critical
             System.err.println("Could not delete file: " + filename);
         }
     }
