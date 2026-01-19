@@ -24,7 +24,7 @@ A full-stack web application for tracking personal expenses, managing budgets an
 - Track budget progress with visual indicators
 - Set spending limits and monitor remaining budget
 
-### 📁 Category Management
+### Category Management
 - System categories (Housing, Food, Transportation, etc.)
 - Create custom categories with custom colors and icons
 - Edit and delete user-created categories
