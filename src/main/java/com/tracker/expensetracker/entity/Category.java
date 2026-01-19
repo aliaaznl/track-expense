@@ -12,7 +12,7 @@ public class Category {
     private Long id;
 
     private String name;
-    private String colour; // Matches your DB column 'colour'
+    private String color; 
     private String icon;
     
     // Many categories belong to One User (nullable for system categories)
