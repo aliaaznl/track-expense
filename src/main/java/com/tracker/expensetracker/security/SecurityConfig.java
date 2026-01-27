@@ -43,7 +43,8 @@ public class SecurityConfig {
             "http://127.0.0.1:5501",
             "http://localhost:3000",
             "http://localhost:8080",
-            "http://127.0.0.1:8080"
+            "http://127.0.0.1:8080",
+                "https://expense-tracker-l9tf.onrender.com"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*")); // Allow all headers for multipart uploads

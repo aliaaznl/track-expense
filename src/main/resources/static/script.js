@@ -12,7 +12,7 @@ signInBtn.addEventListener('click', () => {
 });
 
 // API Base URL
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = '';
 
 // Custom Dialog Functions
 function showAlertDialog(message, title = 'Alert', callback) {
