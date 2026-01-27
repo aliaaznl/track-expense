@@ -1,6 +1,6 @@
 # TrackExpense - Personal Expense Tracker
 
-A full-stack web application for tracking personal expenses, managing budgets and analyzing spending patterns. Built with Spring Boot backend and vanilla JavaScript frontend.
+A full-stack web application for tracking personal expenses, managing budgets, and analyzing spending patterns. Built with Spring Boot backend and vanilla JavaScript frontend.
 
 ![Java](https://img.shields.io/badge/Java-21-orange)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.0-brightgreen)
@@ -16,7 +16,7 @@ A full-stack web application for tracking personal expenses, managing budgets an
 - **Interactive Charts**: Visual representation of spending patterns using Chart.js
 
 ### Transaction Management
-- Add, edit and delete income and expense transactions
+- Add, edit, and delete income and expense transactions
 - Categorize transactions with custom or system categories
 - Attach receipts and documents to transactions
 - Date-based filtering and search functionality
@@ -72,7 +72,6 @@ A full-stack web application for tracking personal expenses, managing budgets an
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
-
 - **Java 21** or higher
 - **Maven 3.6+** (or use included Maven Wrapper)
 - **MySQL 8.0+** database server
@@ -81,7 +80,52 @@ Before you begin, ensure you have the following installed:
 ## Getting Started
 
 ### 1. Clone the Repository
-
 ```bash
 git clone [https://github.com/yourusername/expense-tracker.git](https://github.com/yourusername/expense-tracker.git)
 cd expense-tracker
+2. Database Setup
+Create a MySQL database:
+
+SQL
+CREATE DATABASE expense_tracker;
+Update database credentials in src/main/resources/application.properties:
+
+Properties
+spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+3. Email Configuration (Optional - for password reset)
+If you want to enable password reset functionality, configure email settings.
+
+Get a SendGrid API key (or use another SMTP service) and set the environment variable:
+
+Bash
+export SENDGRID_API_KEY=your_sendgrid_api_key
+Update email settings in application.properties if using a different provider:
+
+Properties
+spring.mail.host=smtp.sendgrid.net
+spring.mail.port=587
+spring.mail.username=apikey
+spring.mail.password=${SENDGRID_API_KEY}
+spring.mail.from=your-email@example.com
+4. Build and Run
+Using Maven Wrapper (Recommended):
+
+Bash
+# Windows
+mvnw.cmd clean install
+mvnw.cmd spring-boot:run
+
+# Linux/Mac
+./mvnw clean install
+./mvnw spring-boot:run
+Using Maven (if installed):
+
+Bash
+mvn clean install
+mvn spring-boot:run
+5. Access the Application
+Live Deployment: You can access the live version of the application here: 👉 https://expense-tracker-l9tf.onrender.com
+
+Local Development: If running locally, open your browser and navigate to: http://localhost:8080
