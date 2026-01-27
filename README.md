@@ -7,6 +7,8 @@ A full-stack web application for tracking personal expenses, managing budgets an
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+### **Live Demo:** [https://expense-tracker-l9tf.onrender.com](https://expense-tracker-l9tf.onrender.com)
+
 ## Features
 
 ### Dashboard & Analytics
@@ -81,66 +83,5 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/expense-tracker.git
+git clone [https://github.com/yourusername/expense-tracker.git](https://github.com/yourusername/expense-tracker.git)
 cd expense-tracker
-```
-
-### 2. Database Setup
-
-1. Create a MySQL database:
-```sql
-CREATE DATABASE expense_tracker;
-```
-
-2. Update database credentials in `src/main/resources/application.properties`:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-```
-
-### 3. Email Configuration (Optional - for password reset)
-
-If you want to enable password reset functionality, configure email settings:
-
-1. Get a SendGrid API key (or use another SMTP service)
-  
-2. Set the environment variable:
-```bash
-export SENDGRID_API_KEY=your_sendgrid_api_key
-```
-
-3. Update email settings in `application.properties` if using a different provider:
-```properties
-spring.mail.host=smtp.sendgrid.net
-spring.mail.port=2525
-spring.mail.username=apikey
-spring.mail.password=${SENDGRID_API_KEY}
-spring.mail.from=your-email@example.com
-```
-
-### 4. Build and Run
-
-#### Using Maven Wrapper (Recommended)
-```bash
-# Windows
-mvnw.cmd clean install
-mvnw.cmd spring-boot:run
-
-# Linux/Mac
-./mvnw clean install
-./mvnw spring-boot:run
-```
-
-#### Using Maven (if installed)
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-### 5. Access the Application
-
-Open your browser and navigate to:
-```
-http://localhost:8080
-```
