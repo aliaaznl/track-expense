@@ -83,49 +83,58 @@ Before you begin, ensure you have the following installed:
 ```bash
 git clone [https://github.com/yourusername/expense-tracker.git](https://github.com/yourusername/expense-tracker.git)
 cd expense-tracker
-2. Database Setup
-Create a MySQL database:
 
+### 2. Database Setup
+
+1. Create a MySQL database:
+```bash
 SQL
 CREATE DATABASE expense_tracker;
-Update database credentials in src/main/resources/application.properties:
 
+2. Update database credentials in src/main/resources/application.properties:
+```bash
 Properties
 spring.datasource.url=jdbc:mysql://localhost:3306/expense_tracker?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
 spring.datasource.username=your_username
 spring.datasource.password=your_password
-3. Email Configuration (Optional - for password reset)
+
+### 3. Email Configuration (Optional - for password reset)
 If you want to enable password reset functionality, configure email settings.
 
-Get a SendGrid API key (or use another SMTP service) and set the environment variable:
+a. Get a SendGrid API key (or use another SMTP service) and set the environment variable:
 
+```bash
 Bash
 export SENDGRID_API_KEY=your_sendgrid_api_key
-Update email settings in application.properties if using a different provider:
 
+b. Update email settings in application.properties if using a different provider:
+
+```bash
 Properties
 spring.mail.host=smtp.sendgrid.net
 spring.mail.port=587
 spring.mail.username=apikey
 spring.mail.password=${SENDGRID_API_KEY}
 spring.mail.from=your-email@example.com
-4. Build and Run
-Using Maven Wrapper (Recommended):
 
+### 4. Build and Run
+Using Maven Wrapper (Recommended):
+```bash
 Bash
 # Windows
 mvnw.cmd clean install
 mvnw.cmd spring-boot:run
-
+```bash
 # Linux/Mac
 ./mvnw clean install
 ./mvnw spring-boot:run
 Using Maven (if installed):
-
+```bash
 Bash
 mvn clean install
 mvn spring-boot:run
-5. Access the Application
+
+### 5. Access the Application
 Live Deployment: You can access the live version of the application here: 👉 https://expense-tracker-l9tf.onrender.com
 
 Local Development: If running locally, open your browser and navigate to: http://localhost:8080
