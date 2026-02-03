@@ -7,8 +7,6 @@ A full-stack web application for tracking personal expenses, managing budgets, a
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-### **Live Demo:** [https://expense-tracker-l9tf.onrender.com](https://expense-tracker-l9tf.onrender.com)
-
 ## Features
 
 ### Dashboard & Analytics
